@@ -1,7 +1,7 @@
 package main.java.com.mikhai1ovmax.javacore.charper11.codeFromBook7;
 
 public class Consumer implements Runnable {
-    Q q = new Q();
+    Q q;
 
     public Consumer(Q q) {
         this.q = q;

@@ -1,7 +1,6 @@
 package main.java.com.mikhai1ovmax.javacore.charper11.codeFromBook7;
 
 
-
 public class Q {
     int n;
     boolean valueSet = false;
@@ -19,14 +18,14 @@ public class Q {
         return n;
     }
 
-    synchronized void put(int n){
-        while (valueSet){
+    synchronized void put(int n) {
+        while (valueSet) {
             try {
                 wait();
-            }catch (InterruptedException e){
+            } catch (InterruptedException e) {
                 System.out.println("Исключение типа InterruptedException перехвачено ");
             }
-            this.n=n;
+            this.n = n;
             valueSet = true;
             System.out.println("отправлено: " + n);
             notify();
