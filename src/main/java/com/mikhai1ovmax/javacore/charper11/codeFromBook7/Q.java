@@ -6,15 +6,16 @@ public class Q {
     boolean valueSet = false;
 
     synchronized int get() {
-        while (!valueSet)
+        while (!valueSet) {
             try {
                 wait();
             } catch (InterruptedException e) {
                 System.out.println("Исключение типа InterruptedException перехвачено ");
             }
-        System.out.println("получено: " + n);
-        valueSet = false;
-        notify();
+            System.out.println("получено: " + n);
+            valueSet = false;
+            notify();
+        }
         return n;
     }
 
@@ -25,11 +26,11 @@ public class Q {
             } catch (InterruptedException e) {
                 System.out.println("Исключение типа InterruptedException перехвачено ");
             }
-            this.n = n;
-            valueSet = true;
-            System.out.println("отправлено: " + n);
-            notify();
         }
+        this.n = n;
+        valueSet = true;
+        System.out.println("отправлено: " + n);
+        notify();
     }
 
 }
