@@ -1,4 +1,4 @@
-package main.java.com.mikhai1ovmax.javacore.charper28.twoSemafores;
+package main.java.com.mikhai1ovmax.javacore.charper28.twoSemaphores;
 
 import java.util.concurrent.Semaphore;
 
@@ -15,11 +15,12 @@ public class Q {
             System.out.println("перехвачено InterruptedException");
         }
         System.out.println("получено: " + n);
+        semProd.release();
     }
 
     void put(int n){
         try{
-            semCon.acquire();
+            semProd.acquire();
         }catch (InterruptedException e){
             System.out.println("перехвачено InterruptedException");
         }

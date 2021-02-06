@@ -1,4 +1,4 @@
-package main.java.com.mikhai1ovmax.javacore.charper28.twoSemafores;
+package main.java.com.mikhai1ovmax.javacore.charper28.twoSemaphores;
 
 public class Producer implements Runnable {
     Q q;
