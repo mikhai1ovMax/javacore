@@ -1,16 +1,14 @@
 package main.java.com.mikhai1ovmax.javacore.task1;
 
-import java.util.concurrent.Semaphore;
+import java.util.concurrent.CompletableFuture;
 
 public class Main {
     public static void main(String[] args) {
-        Semaphore semaphore = new Semaphore(1,true);
+
         Foo foo = new Foo();
-        Printer printer = new Printer(semaphore, foo, 1);
-        Printer printer1 = new Printer(semaphore, foo, 2);
-        Printer printer2 = new Printer(semaphore, foo, 3);
-
-
+        CompletableFuture.runAsync(()-> foo.printWord(3));
+        CompletableFuture.runAsync(()-> foo.printWord(2));
+        CompletableFuture.runAsync(()-> foo.printWord(1));
 
     }
 }
