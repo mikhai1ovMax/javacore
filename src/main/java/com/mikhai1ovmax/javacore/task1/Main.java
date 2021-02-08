@@ -6,9 +6,11 @@ public class Main {
     public static void main(String[] args) {
 
         Foo foo = new Foo();
-        CompletableFuture.runAsync(()-> foo.first());
-        CompletableFuture.runAsync(()-> foo.second());
         CompletableFuture.runAsync(()-> foo.third());
-
+        CompletableFuture.runAsync(()-> foo.second());
+        CompletableFuture.runAsync(()-> foo.first());
+//        foo.first();
+//        foo.second();
+//        foo.third();
     }
 }
