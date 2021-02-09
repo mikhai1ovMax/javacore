@@ -1,15 +1,21 @@
 package main.java.com.mikhai1ovmax.javacore.task2;
 
 import java.util.concurrent.Phaser;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class FizzBuzz {
-    int n;
-    Phaser phaser;
+    final int n;
+    Phaser phaser = new Phaser();
 
-    FizzBuzz(int n, Phaser phaser){
+    FizzBuzz(int n){
         this.n = n;
-        this.phaser = phaser;
+    }
 
+    public void startThreads() {
+        new Thread(this::buzz).start();
+        new Thread(this::fizz).start();
+        new Thread(this::fizzbuzz).start();
+        new Thread(this::number).start();
     }
 
     public void fizz(){
@@ -18,6 +24,11 @@ public class FizzBuzz {
             if (i % 3 == 0 && i % 5 != 0)
                 System.out.println("fizz");
             phaser.arriveAndAwaitAdvance();
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
         phaser.arriveAndDeregister();
     }
@@ -28,6 +39,11 @@ public class FizzBuzz {
             if (i % 3 != 0 && i % 5 == 0)
                 System.out.println("buzz");
             phaser.arriveAndAwaitAdvance();
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
         phaser.arriveAndDeregister();
     }
@@ -38,6 +54,11 @@ public class FizzBuzz {
             if (i % 3 == 0 && i % 5 == 0)
                 System.out.println("fizzbuzz");
             phaser.arriveAndAwaitAdvance();
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
         phaser.arriveAndDeregister();
     }
@@ -48,7 +69,13 @@ public class FizzBuzz {
             if (i % 3 != 0 && i % 5 != 0)
                 System.out.println(i);
             phaser.arriveAndAwaitAdvance();
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
         phaser.arriveAndDeregister();
     }
+
 }
