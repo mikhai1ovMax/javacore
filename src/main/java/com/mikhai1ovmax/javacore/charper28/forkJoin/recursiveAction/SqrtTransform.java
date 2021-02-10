@@ -1,4 +1,4 @@
-package main.java.com.mikhai1ovmax.javacore.charper28.forkJoin;
+package main.java.com.mikhai1ovmax.javacore.charper28.forkJoin.recursiveAction;
 
 import java.util.concurrent.RecursiveAction;
 

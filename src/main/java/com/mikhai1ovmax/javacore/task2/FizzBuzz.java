@@ -7,7 +7,7 @@ public class FizzBuzz {
     final int n;
     Phaser phaser = new Phaser();
 
-    FizzBuzz(int n){
+    FizzBuzz(int n) {
         this.n = n;
     }
 
@@ -18,9 +18,9 @@ public class FizzBuzz {
         new Thread(this::number).start();
     }
 
-    public void fizz(){
+    public void fizz() {
         phaser.register();
-        for (int i = 1 ; i <= n; i++) {
+        for (int i = 1; i <= n; i++) {
             if (i % 3 == 0 && i % 5 != 0)
                 System.out.println("fizz");
             phaser.arriveAndAwaitAdvance();
@@ -33,7 +33,7 @@ public class FizzBuzz {
         phaser.arriveAndDeregister();
     }
 
-    public void buzz(){
+    public void buzz() {
         phaser.register();
         for (int i = 1; i <= n; i++) {
             if (i % 3 != 0 && i % 5 == 0)
@@ -48,7 +48,7 @@ public class FizzBuzz {
         phaser.arriveAndDeregister();
     }
 
-    public void fizzbuzz(){
+    public void fizzbuzz() {
         phaser.register();
         for (int i = 1; i <= n; i++) {
             if (i % 3 == 0 && i % 5 == 0)
@@ -63,7 +63,7 @@ public class FizzBuzz {
         phaser.arriveAndDeregister();
     }
 
-    public void number(){
+    public void number() {
         phaser.register();
         for (int i = 1; i <= n; i++) {
             if (i % 3 != 0 && i % 5 != 0)
